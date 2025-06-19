@@ -1,21 +1,33 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter, Poppins, Lustria, Lato } from 'next/font/google';
+import localFont from 'next/font/local';
 import { CartProvider } from '@/contexts/CartContext';
 
-// Initialize Google Fonts
-const lustria = Lustria({ 
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-lustria',
-  display: 'swap',
+// Initialize local fonts
+const lato = localFont({
+  src: [
+    {
+      path: '../public/fonts/Lato-Light.woff2',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/Lato-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/Lato-Bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-lato',
 });
 
-const lato = Lato({ 
-  weight: ['300', '400', '700'],
-  subsets: ['latin'],
-  variable: '--font-lato',
-  display: 'swap',
+const lustria = localFont({
+  src: '../public/fonts/Lustria-Regular.woff2',
+  variable: '--font-lustria',
 });
 
 export const metadata: Metadata = {
