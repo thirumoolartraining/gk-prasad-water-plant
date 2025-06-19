@@ -3,17 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "mkdir -p .next/cache/webpack && next dev",
+    "dev": "node -e \"const fs = require('fs'); fs.mkdirSync('.next/cache/webpack', { recursive: true });\" && next dev",
     "build": "next build",
-    "prebuild": "mkdir -p .next/cache/webpack",
-    "start": "mkdir -p .next/cache/webpack && next start",
+    "prebuild": "node -e \"const fs = require('fs'); fs.mkdirSync('.next/cache/webpack', { recursive: true });\"",
+    "start": "node -e \"const fs = require('fs'); fs.mkdirSync('.next/cache/webpack', { recursive: true });\" && next start",
     "lint": "eslint . --ext .ts,.tsx",
     "test": "cypress run",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "test:a11y": "jest __tests__/a11y-smart-dialog.test.tsx",
     "deploy": "vercel --prod",
-    "vercel:deploy": "vercel --prod"
+    "vercel:deploy": "vercel --prod",
+    "prepare": "node scripts/download-fonts.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
