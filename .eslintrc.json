@@ -1,0 +1,17 @@
+{
+  "extends": "next/core-web-vitals",
+  "plugins": ["no-raw-dialog"],
+  "rules": {
+    "import/no-duplicates": "error",
+    "import/no-anonymous-default-export": "warn",
+    "no-raw-dialog/no-raw-dialog": "error"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.tsx"],
+      "rules": {
+        "jsx-a11y/dialog-has-title": "error"
+      }
+    }
+  ]
+}
