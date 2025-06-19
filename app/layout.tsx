@@ -72,7 +72,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${lustria.variable} ${lato.variable} font-sans`}>
+    <html lang="en" className={`${lustria.variable} ${lato.variable} scroll-smooth`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script
@@ -80,7 +80,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="font-inter antialiased" data-testid="viewport-responsive">
+      <body className={`${lato.className} antialiased bg-background text-foreground`} data-testid="viewport-responsive">
         <CartProvider>
           {children}
         </CartProvider>
