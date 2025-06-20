@@ -115,7 +115,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-[var(--primary-water-blue)]" />
-                <p className="text-gray-600 text-sm sm:text-base">info@gkprasadaquafarm.com</p>
+                <p className="text-gray-600 text-sm sm:text-base">info@gkprasadaquafarm.shop</p>
               </div>
             </div>
           </div>
