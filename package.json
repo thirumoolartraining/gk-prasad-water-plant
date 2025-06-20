@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "mkdir .next\\cache\\webpack 2>nul || ver > nul && next dev",
+    "dev": "next dev",
     "build": "next build",
-    "prebuild": "mkdir .next\\cache\\webpack 2>nul || ver > nul",
-    "start": "mkdir .next\\cache\\webpack 2>nul || ver > nul && next start",
+    "prebuild": "mkdir -p .next/cache/webpack",
+    "start": "next start",
     "lint": "eslint . --ext .ts,.tsx",
     "test": "cypress run",
     "cypress:open": "cypress open",
