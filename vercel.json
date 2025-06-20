@@ -1,15 +1,5 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist",
-        "cleanDistDir": true
-      }
-    }
-  ],
   "routes": [
     { "handle": "filesystem" },
     {
@@ -19,11 +9,8 @@
       }
     },
     {
-      "src": "/favicon.ico",
-      "headers": {
-        "cache-control": "public, max-age=3600"
-      }
-    },
-    { "src": "/(.*)", "dest": "/index.html" }
+      "src": "/(.*)",
+      "dest": "/"
+    }
   ]
 }
