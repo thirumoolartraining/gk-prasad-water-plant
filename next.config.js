@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const isWebContainer = !!process.env.WEBCONTAINER_API_URL;
+const withOptimizedCss = require('next-with-css');
 
 const nextConfig = {
   eslint: {
@@ -9,7 +10,7 @@ const nextConfig = {
     unoptimized: true,
     domains: ['localhost'],
   },
-  // Disable font optimization since we're using local fonts
+  // Disable default font optimization since we're using local fonts
   optimizeFonts: false,
   // Enable experimental features for better optimization
   experimental: {
@@ -18,7 +19,7 @@ const nextConfig = {
     serverComponentsExternalPackages: ['@prisma/client'],
   },
   // Configure webpack
-  webpack: (config) => {
+  webpack: (config, { isServer, dev }) => {
     // Use memory cache instead of persistent cache to prevent ENOENT errors
     config.cache = { type: 'memory' };
     
@@ -31,8 +32,25 @@ const nextConfig = {
       },
     });
 
+    // Only optimize CSS in production
+    if (!dev && !isServer) {
+      const Critters = require('critters-webpack-plugin');
+      config.plugins.push(
+        new Critters({
+          // Optional configuration
+          preload: 'swap',
+          preloadFonts: true,
+          preload: 'media',
+          fonts: true,
+        })
+      );
+    }
+
     return config;
   },
+  // Enable CSS optimizations
+  optimizeCss: true,
 };
 
-module.exports = nextConfig;
+// Apply CSS optimizations
+module.exports = withOptimizedCss(nextConfig);
