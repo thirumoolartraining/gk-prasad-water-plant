@@ -1,33 +1,21 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
+import { Inter, Poppins, Lustria, Lato } from 'next/font/google';
 import { CartProvider } from '@/contexts/CartContext';
 
-// Initialize local fonts
-const lato = localFont({
-  src: [
-    {
-      path: '../public/fonts/Lato-Light.woff2',
-      weight: '300',
-      style: 'normal',
-    },
-    {
-      path: '../public/fonts/Lato-Regular.woff2',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: '../public/fonts/Lato-Bold.woff2',
-      weight: '700',
-      style: 'normal',
-    },
-  ],
-  variable: '--font-lato',
+// Initialize Google Fonts
+const lustria = Lustria({ 
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-lustria',
+  display: 'swap',
 });
 
-const lustria = localFont({
-  src: '../public/fonts/Lustria-Regular.woff2',
-  variable: '--font-lustria',
+const lato = Lato({ 
+  weight: ['300', '400', '700'],
+  subsets: ['latin'],
+  variable: '--font-lato',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -70,7 +58,12 @@ const jsonLd = {
     "postalCode": "612 605",
     "addressCountry": "IN"
   },
-  "telephone": "+91-XXXXXXXXXX",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "availableLanguage": "English",
+    "contactOption": "TollFree"
+  },
   "url": "https://gkprasadaquafarm.com",
   "sameAs": [
     "https://facebook.com/gkprasadaquafarm",
@@ -84,7 +77,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${lustria.variable} ${lato.variable} scroll-smooth`}>
+    <html lang="en" className={`${lustria.variable} ${lato.variable} font-sans`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script
@@ -92,7 +85,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${lato.className} antialiased bg-background text-foreground`} data-testid="viewport-responsive">
+      <body className="font-inter antialiased" data-testid="viewport-responsive">
         <CartProvider>
           {children}
         </CartProvider>
