@@ -104,9 +104,18 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-800">Email Us</h3>
-                    <a href="mailto:info@gkprasadaquafarm.shop" className="text-[#0098A9] hover:underline">
-                      info@gkprasadaquafarm.shop
-                    </a>
+                    <div className="space-y-1">
+                      <div>
+                        <a href="mailto:info@gkprasadaquafarm.shop" className="text-[#0098A9] hover:underline">
+                          info@gkprasadaquafarm.shop
+                        </a>
+                      </div>
+                      <div>
+                        <a href="mailto:gkprasadaquafarm805@gmail.com" className="text-[#0098A9] hover:underline">
+                          gkprasadaquafarm805@gmail.com
+                        </a>
+                      </div>
+                    </div>
                     <p className="text-sm text-gray-500 mt-1">Response within 24-48 business hours</p>
                   </div>
                 </div>
